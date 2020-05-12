@@ -39,6 +39,21 @@ namespace WebOne
 
 			Console.Title = "WebOne @ " + ConfigFile.DefaultHostName + ":" + Port;
 
+			//start FTP server
+			try
+			{
+				if(ConfigFile.FtpPort != 0)
+				new FTPServer(ConfigFile.FtpPort);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Cannot start FTP server: {0}!", ex.Message);
+				#if DEBUG
+				throw;
+				#endif
+			}
+
+			//start HTTP server (later will be above)
 			try
 			{
 				new HTTPServer(Port);

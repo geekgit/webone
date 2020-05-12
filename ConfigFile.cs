@@ -136,6 +136,11 @@ namespace WebOne
 		public static string TemporaryDirectory = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
 
 		/// <summary>
+		/// TCP port that should be used by the FTP Proxy Server
+		/// </summary>
+		public static int FtpPort = 21;
+
+		/// <summary>
 		/// Indicates is there are a LogFile or AppendLogFile directive in config file
 		/// </summary>
 		public static bool HaveLogFile = false;
@@ -268,6 +273,9 @@ namespace WebOne
 								switch (ParamName)
 								{
 									case "Port":
+										Port = Convert.ToInt32(ParamValue);
+										break;
+									case "FtpPort": //undone: temporary here
 										Port = Convert.ToInt32(ParamValue);
 										break;
 									case "OutputEncoding":
